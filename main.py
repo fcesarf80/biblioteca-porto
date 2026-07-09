@@ -1,16 +1,22 @@
 import tkinter as tk
 
+from theme.config import (
+    WINDOW_HEIGHT,
+    WINDOW_WIDTH,
+    WINDOW_TITLE
+)
+
 
 class BibliotecaPortoApp:
 
-    LARGURA = 1280
-    ALTURA = 720
+    LARGURA = WINDOW_WIDTH
+    ALTURA = WINDOW_HEIGHT
 
     def __init__(self):
 
         self.root = tk.Tk()
 
-        self.root.title("Biblioteca Porto")
+        self.root.title(WINDOW_TITLE)
 
         self.root.geometry(
             self.centralizar_janela(
