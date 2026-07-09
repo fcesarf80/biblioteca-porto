@@ -31,11 +31,12 @@ class App:
         self.theme = ThemeManager(CURRENT_THEME)
 
         self.screen_manager = ScreenManager(
+            self.root,
             self.theme
         )
+
         self.screen_manager.show(
-            DashboardView,
-            self.root
+            DashboardView
         )
 
     def centralizar_janela(
