@@ -1,5 +1,6 @@
 from views.base_view import BaseView
 from components.sidebar import Sidebar
+from components.topbar import TopBar
 
 class DashboardView(BaseView):
 
@@ -12,3 +13,4 @@ class DashboardView(BaseView):
     )
         
         self.sidebar = Sidebar(self)
+        self.topbar = TopBar(self)

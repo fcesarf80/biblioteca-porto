@@ -8,15 +8,15 @@ class Sidebar(tk.Frame):
     WIDTH = 250
 
     BUTTONS = [
-        "Dashboard",
-        "Livros",
-        "Utilizadores",
-        "Empréstimos",
-        "Devolução",
-        "Ativos",
-        "Histórico",
-        "CSV",
-        "Estatísticas",
+        ("Dashboard", None),
+        ("Livros", None),
+        ("Utilizadores", None),
+        ("Empréstimos", None),
+        ("Devolução", None),
+        ("Ativos", None),
+        ("Histórico", None),
+        ("CSV", None),
+        ("Estatísticas", None),
     ]
 
     def __init__(self, master):
@@ -41,11 +41,12 @@ class Sidebar(tk.Frame):
 
         y = 30
 
-        for texto in self.BUTTONS:
+        for texto, comando in self.BUTTONS:
 
             botao = SidebarButton(
                 self,
-                text=texto
+                text=texto,
+                command=comando
             )
 
             botao.place(
