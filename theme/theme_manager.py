@@ -6,10 +6,7 @@ from theme.config import CURRENT_THEME
 class ThemeManager:
 
     def __init__(self):
+        self.theme_path = Path(__file__).parent / CURRENT_THEME
 
-        self.theme_path = (
-            Path(__file__).parent /
-            CURRENT_THEME
-        )
-
-theme.get_background("dashboard")
+    def get_background(self, screen):
+        return self.theme_path / f"{screen}.png"
