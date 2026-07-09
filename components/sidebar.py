@@ -1,4 +1,5 @@
 import tkinter as tk
+from components.sidebar_button import SidebarButton
 
 
 class Sidebar(tk.Frame):
@@ -17,4 +18,14 @@ class Sidebar(tk.Frame):
             x=0,
             y=0,
             relheight=1
+        )
+
+        self.dashboard_button = SidebarButton(
+            self,
+            text="Dashboard"
+        )
+
+        self.dashboard_button.place(
+            x=15,
+            y=30
         )
