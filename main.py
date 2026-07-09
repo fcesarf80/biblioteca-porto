@@ -5,6 +5,9 @@ from theme.config import (
     WINDOW_WIDTH,
     WINDOW_TITLE
 )
+from PIL import Image, ImageTk
+
+from theme.theme_manager import ThemeManager
 
 
 class BibliotecaPortoApp:
@@ -26,6 +29,27 @@ class BibliotecaPortoApp:
         )
 
         self.root.resizable(False, False)
+
+        self.theme = ThemeManager()
+
+        caminho = self.theme.get_background("bg_01_dashboard.png")
+
+        imagem = Image.open(caminho)
+        imagem = imagem.resize((self.LARGURA, self.ALTURA))
+
+        self.background = ImageTk.PhotoImage(imagem)
+
+        self.label_background = tk.Label(
+            self.root,
+            image=self.background
+        )
+
+        self.label_background.place(
+            x=0,
+            y=0,
+            width=self.LARGURA,
+            height=self.ALTURA
+        )
 
     def centralizar_janela(self, largura, altura):
 
