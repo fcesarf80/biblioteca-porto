@@ -5,6 +5,8 @@ from theme.config import (
     WINDOW_WIDTH,
     WINDOW_TITLE
 )
+
+from views.dashboard_view import DashboardView
 from PIL import Image, ImageTk
 
 from theme.theme_manager import ThemeManager
