@@ -1,5 +1,5 @@
 from views.base_view import BaseView
-
+from components.sidebar import Sidebar
 
 class DashboardView(BaseView):
 
@@ -10,3 +10,5 @@ class DashboardView(BaseView):
         theme,
         "dashboard"
     )
+        
+        self.sidebar = Sidebar(self)
