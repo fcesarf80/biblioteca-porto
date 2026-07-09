@@ -8,6 +8,8 @@ from theme.config import (
 
 from utils.screen_manager import ScreenManager
 from views.dashboard_view import DashboardView
+from theme.config import CURRENT_THEME
+from theme.theme_manager import ThemeManager
 
 
 class App:
@@ -25,6 +27,8 @@ class App:
         )
 
         self.root.resizable(False, False)
+
+        self.theme = ThemeManager(CURRENT_THEME)
 
         self.screen_manager = ScreenManager()
         self.screen_manager.show(
