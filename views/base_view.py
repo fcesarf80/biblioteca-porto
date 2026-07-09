@@ -2,7 +2,11 @@ import tkinter as tk
 
 from PIL import Image, ImageTk
 
-from theme.config import WINDOW_WIDTH, WINDOW_HEIGHT
+from theme.config import (
+    CURRENT_THEME,
+    WINDOW_HEIGHT,
+    WINDOW_WIDTH,
+)
 from theme.theme_manager import ThemeManager
 
 
@@ -19,7 +23,7 @@ class BaseView(tk.Frame):
             height=WINDOW_HEIGHT
         )
 
-        self.theme = ThemeManager()
+        self.theme = ThemeManager(CURRENT_THEME)
 
         caminho = self.theme.get_background(background)
 
