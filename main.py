@@ -10,6 +10,7 @@ from views.dashboard_view import DashboardView
 from PIL import Image, ImageTk
 
 from theme.theme_manager import ThemeManager
+from utils.screen_manager import ScreenManager
 
 
 class BibliotecaPortoApp:

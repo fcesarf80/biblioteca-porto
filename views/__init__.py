@@ -19,4 +19,9 @@ class BaseView(tk.Frame):
             height=WINDOW_HEIGHT
         )
 
-        self.dashboard = DashboardView(self.root)
+        self.screen_manager = ScreenManager()
+
+        self.screen_manager.show(
+            DashboardView,
+            self.root
+        )
