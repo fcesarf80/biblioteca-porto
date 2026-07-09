@@ -7,5 +7,5 @@ class DashboardView(BaseView):
 
         super().__init__(
             master,
-            "bg_01_dashboard.png"
+            "dashboard"
         )

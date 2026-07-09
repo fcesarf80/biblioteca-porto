@@ -12,6 +12,4 @@ class ThemeManager:
             CURRENT_THEME
         )
 
-    def get_background(self, nome_arquivo):
-
-        return self.theme_path / nome_arquivo
+theme.get_background("dashboard")
