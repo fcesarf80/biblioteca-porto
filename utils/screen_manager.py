@@ -1,7 +1,8 @@
 class ScreenManager:
 
-    def __init__(self):
+    def __init__(self, theme):
 
+        self.theme = theme
         self.current_view = None
 
     def show(self, view_class, master):
@@ -9,4 +10,7 @@ class ScreenManager:
         if self.current_view is not None:
             self.current_view.destroy()
 
-        self.current_view = view_class(master)
+        self.current_view = view_class(
+            master,
+            self.theme
+        )

@@ -3,18 +3,23 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 from theme.config import (
-    CURRENT_THEME,
     WINDOW_HEIGHT,
     WINDOW_WIDTH,
 )
-from theme.theme_manager import ThemeManager
 
 
 class BaseView(tk.Frame):
 
-    def __init__(self, master, background):
+    def __init__(
+        self,
+        master,
+        theme,
+        background
+    ):
 
         super().__init__(master)
+
+        self.theme = theme
 
         self.place(
             x=0,
@@ -22,8 +27,6 @@ class BaseView(tk.Frame):
             width=WINDOW_WIDTH,
             height=WINDOW_HEIGHT
         )
-
-        self.theme = ThemeManager(CURRENT_THEME)
 
         caminho = self.theme.get_background(background)
 
