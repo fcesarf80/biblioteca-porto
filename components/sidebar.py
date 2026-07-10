@@ -24,12 +24,14 @@ class Sidebar(tk.Frame):
         super().__init__(
             master,
             width=self.WIDTH,
-            bg="#1E293B"
+            highlightthickness=0,
+            bd=0
         )
 
         self.place(
             x=0,
             y=0,
+            width=self.WIDTH,
             relheight=1
         )
 

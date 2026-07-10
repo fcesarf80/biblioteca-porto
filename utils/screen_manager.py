@@ -13,5 +13,6 @@ class ScreenManager:
 
         self.current_view = view_class(
             self.master,
-            self.theme
+            self.theme,
+            self
         )
