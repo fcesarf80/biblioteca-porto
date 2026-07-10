@@ -39,7 +39,7 @@ class DashboardView(BaseView):
             width=220,
             height=120,
             command=lambda: self.screen_manager.show(
-                LivrosView
+                LivrosView  
             )
         )
        
