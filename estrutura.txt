@@ -1,0 +1,108 @@
+Folder PATH listing for volume OS
+Volume serial number is 000000B4 8A29:3405
+C:.
+|   .gitignore
+|   app.py
+|   estrutura.txt
+|   main.py
+|   README.md
+|   requirements.txt
+|   
++---assets
+|   +---fonts
+|   \---icons
+|           favicon.ico
+|           logo.png
+|           
++---components
+|   |   activity_panel.py
+|   |   card.py
+|   |   quick_action_button.py
+|   |   sidebar.py
+|   |   sidebar_button.py
+|   |   topbar.py
+|   |   
+|   \---__pycache__
+|           activity_panel.cpython-312.pyc
+|           card.cpython-312.pyc
+|           card.cpython-314.pyc
+|           quick_action_button.cpython-312.pyc
+|           sidebar.cpython-312.pyc
+|           sidebar_button.cpython-312.pyc
+|           topbar.cpython-312.pyc
+|           
++---controllers
+|   |   dashboard_controller.py
+|   |   
+|   \---__pycache__
+|           dashboard_controller.cpython-312.pyc
+|           
++---data
++---docs
++---models
++---services
++---tests
++---theme
+|   |   config.py
+|   |   theme_manager.py
+|   |   __init__.py
+|   |   
+|   +---porto
+|   |       ativos.png
+|   |       csv.png
+|   |       dashboard.png
+|   |       devolucao.png
+|   |       emprestimos.png
+|   |       estatisticas.png
+|   |       historico.png
+|   |       livros.png
+|   |       utilizadores.png
+|   |       
+|   +---sao_joao
+|   |       ativos.png
+|   |       csv.png
+|   |       dashboard.png
+|   |       devolucao.png
+|   |       emprestimos.png
+|   |       estatisticas.png
+|   |       historico.png
+|   |       livros.png
+|   |       utilizadores.png
+|   |       
+|   \---__pycache__
+|           config.cpython-312.pyc
+|           theme_manager.cpython-312.pyc
+|           __init__.cpython-312.pyc
+|           
++---utils
+|   |   navigator.py
+|   |   screen_manager.py
+|   |   
+|   \---__pycache__
+|           screen_manager.cpython-312.pyc
+|           
++---views
+|   |   ativos_view.py
+|   |   base_module_view.py
+|   |   base_view.py
+|   |   csv_view.py
+|   |   dashboard_view.py
+|   |   devolucao_view.py
+|   |   emprestimos_view.py
+|   |   estatisticas_view.py
+|   |   historico_view.py
+|   |   livros_view.py
+|   |   utilizadores_view.py
+|   |   __init__.py
+|   |   
+|   \---__pycache__
+|           base_module_view.cpython-312.pyc
+|           base_view.cpython-312.pyc
+|           dashboard_view.cpython-312.pyc
+|           livros_view.cpython-312.pyc
+|           __init__.cpython-312.pyc
+|           __init__.cpython-314.pyc
+|           
+\---__pycache__
+        app.cpython-312.pyc
+        
