@@ -6,6 +6,7 @@ from components.card import Card
 from components.quick_action_button import QuickActionButton
 from components.activity_panel import ActivityPanel
 from controllers.dashboard_controller import DashboardController
+from views.livros_view import LivrosView
 
 
 class DashboardView(BaseView):
@@ -36,7 +37,10 @@ class DashboardView(BaseView):
             x=280,
             y=172,
             width=220,
-            height=120
+            height=120,
+            command=lambda: self.screen_manager.show(
+                LivrosView
+            )
         )
        
         self.card_utilizadores = Card(
