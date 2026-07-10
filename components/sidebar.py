@@ -2,60 +2,50 @@ import tkinter as tk
 
 from components.sidebar_button import SidebarButton
 
-
 class Sidebar(tk.Frame):
 
     WIDTH = 250
 
-    BUTTONS = [
-        ("Dashboard", None),
-        ("Livros", None),
-        ("Utilizadores", None),
-        ("Empréstimos", None),
-        ("Devolução", None),
-        ("Ativos", None),
-        ("Histórico", None),
-        ("CSV", None),
-        ("Estatísticas", None),
+    MENU_ITEMS = [
+        "Dashboard",
+        "Livros",
+        "Utilizadores",
+        "Empréstimos",
+        "Devolução",
+        "Ativos",
+        "Histórico",
+        "CSV",
+        "Estatísticas",
     ]
 
-    def __init__(self, master):
+    def __init__(
+        self,
+        master,
+        on_menu_click
+    ):
+        super().__init__(master)
 
-        super().__init__(
-            master,
-            width=self.WIDTH,
-            highlightthickness=0,
-            bd=0
-        )
+        self.on_menu_click = on_menu_click
 
-        self.place(
-            x=0,
-            y=0,
-            width=self.WIDTH,
-            relheight=1
-        )
+        self.place(x=0, y=0, width=self.WIDTH, relheight=1)
 
-        self.buttons = []
+        self.menu_buttons = []
 
         self.criar_botoes()
 
     def criar_botoes(self):
-
         y = 30
 
-        for texto, comando in self.BUTTONS:
-
+        for texto in self.MENU_ITEMS:
+            
             botao = SidebarButton(
                 self,
                 text=texto,
-                command=comando
+                command=lambda nome=texto: self.on_menu_click(nome)
             )
 
-            botao.place(
-                x=15,
-                y=y
-            )
+            botao.place(x=15, y=y)
 
-            self.buttons.append(botao)
+            self.menu_buttons.append(botao)
 
             y += 55

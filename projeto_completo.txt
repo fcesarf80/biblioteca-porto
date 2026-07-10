@@ -1,0 +1,1009 @@
+﻿=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\app.py ===
+import tkinter as tk
+
+from theme.config import (
+    WINDOW_HEIGHT,
+    WINDOW_TITLE,
+    WINDOW_WIDTH,
+)
+
+from utils.screen_manager import ScreenManager
+from views.dashboard_view import DashboardView
+from theme.config import CURRENT_THEME
+from theme.theme_manager import ThemeManager
+
+
+class App:
+
+    def __init__(self):
+
+        self.root = tk.Tk()
+
+        self.root.title(WINDOW_TITLE)
+        self.root.geometry(
+            self.centralizar_janela(
+                WINDOW_WIDTH,
+                WINDOW_HEIGHT
+            )
+        )
+
+        self.root.resizable(False, False)
+
+        self.theme = ThemeManager(CURRENT_THEME)
+
+        self.screen_manager = ScreenManager(
+            self.root,
+            self.theme
+        )
+
+        self.screen_manager.show(
+            DashboardView
+        )
+
+    def centralizar_janela(
+        self,
+        largura,
+        altura
+    ):
+
+        largura_tela = self.root.winfo_screenwidth()
+        altura_tela = self.root.winfo_screenheight()
+
+        x = (largura_tela - largura) // 2
+        y = (altura_tela - altura) // 2
+
+        return f"{largura}x{altura}+{x}+{y}"
+
+    def run(self):
+
+        self.root.mainloop()
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\estrutura.txt ===
+Folder PATH listing for volume OS
+Volume serial number is 000000B4 8A29:3405
+C:.
+|   .gitignore
+|   app.py
+|   estrutura.txt
+|   main.py
+|   README.md
+|   requirements.txt
+|   
++---assets
+|   +---fonts
+|   \---icons
+|           favicon.ico
+|           logo.png
+|           
++---components
+|   |   activity_panel.py
+|   |   card.py
+|   |   quick_action_button.py
+|   |   sidebar.py
+|   |   sidebar_button.py
+|   |   topbar.py
+|   |   
+|   \---__pycache__
+|           activity_panel.cpython-312.pyc
+|           card.cpython-312.pyc
+|           card.cpython-314.pyc
+|           quick_action_button.cpython-312.pyc
+|           sidebar.cpython-312.pyc
+|           sidebar_button.cpython-312.pyc
+|           topbar.cpython-312.pyc
+|           
++---controllers
+|   |   dashboard_controller.py
+|   |   
+|   \---__pycache__
+|           dashboard_controller.cpython-312.pyc
+|           
++---data
++---docs
++---models
++---services
++---tests
++---theme
+|   |   config.py
+|   |   theme_manager.py
+|   |   __init__.py
+|   |   
+|   +---porto
+|   |       ativos.png
+|   |       csv.png
+|   |       dashboard.png
+|   |       devolucao.png
+|   |       emprestimos.png
+|   |       estatisticas.png
+|   |       historico.png
+|   |       livros.png
+|   |       utilizadores.png
+|   |       
+|   +---sao_joao
+|   |       ativos.png
+|   |       csv.png
+|   |       dashboard.png
+|   |       devolucao.png
+|   |       emprestimos.png
+|   |       estatisticas.png
+|   |       historico.png
+|   |       livros.png
+|   |       utilizadores.png
+|   |       
+|   \---__pycache__
+|           config.cpython-312.pyc
+|           theme_manager.cpython-312.pyc
+|           __init__.cpython-312.pyc
+|           
++---utils
+|   |   navigator.py
+|   |   screen_manager.py
+|   |   
+|   \---__pycache__
+|           screen_manager.cpython-312.pyc
+|           
++---views
+|   |   ativos_view.py
+|   |   base_module_view.py
+|   |   base_view.py
+|   |   csv_view.py
+|   |   dashboard_view.py
+|   |   devolucao_view.py
+|   |   emprestimos_view.py
+|   |   estatisticas_view.py
+|   |   historico_view.py
+|   |   livros_view.py
+|   |   utilizadores_view.py
+|   |   __init__.py
+|   |   
+|   \---__pycache__
+|           base_module_view.cpython-312.pyc
+|           base_view.cpython-312.pyc
+|           dashboard_view.cpython-312.pyc
+|           livros_view.cpython-312.pyc
+|           __init__.cpython-312.pyc
+|           __init__.cpython-314.pyc
+|           
+\---__pycache__
+        app.cpython-312.pyc
+        
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\main.py ===
+from app import App
+
+
+if __name__ == "__main__":
+
+    app = App()
+    app.run()
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\README.md ===
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\requirements.txt ===
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\components\activity_panel.py ===
+import tkinter as tk
+
+
+class ActivityPanel(tk.Frame):
+
+    def __init__(
+        self,
+        master,
+        x,
+        y,
+        width,
+        height
+    ):
+
+        super().__init__(
+            master,
+            width=width,
+            height=height,
+            bg="#48E65E",
+            highlightbackground="#0B6E1A",
+            highlightthickness=2,
+            bd=0
+        )
+
+        self.place(
+            x=x,
+            y=y
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\components\card.py ===
+import tkinter as tk
+
+
+class Card(tk.Frame):
+
+    def __init__(
+        self,
+        master,
+        x,
+        y,
+        width,
+        height,
+        command=None
+    ):
+
+        super().__init__(
+            master,
+            width=width,
+            height=height,
+            highlightthickness=0,
+            bd=0
+        )
+
+        self.place(
+            x=x,
+            y=y
+        )
+
+        self.button = tk.Button(
+            self,
+            command=command,
+            relief="flat",
+            borderwidth=0,
+            highlightthickness=0,
+            cursor="hand2"
+        )
+
+        self.button.place(
+            x=0,
+            y=0,
+            relwidth=1,
+            relheight=1
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\components\quick_action_button.py ===
+import tkinter as tk
+
+
+class QuickActionButton(tk.Frame):
+
+    def __init__(
+        self,
+        master,
+        x,
+        y,
+        width,
+        height,
+        command=None
+    ):
+
+        super().__init__(
+            master,
+            width=width,
+            height=height,
+            bg="#48E65E",
+            highlightbackground="#0B6E1A",
+            highlightthickness=2,
+            bd=0
+        )
+
+        self.place(
+            x=x,
+            y=y
+        )
+
+        self.button = tk.Button(
+            self,
+            command=command,
+            relief="flat",
+            borderwidth=0,
+            highlightthickness=0,
+            cursor="hand2"
+        )
+
+        self.button.place(
+            x=0,
+            y=0,
+            relwidth=1,
+            relheight=1
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\components\sidebar.py ===
+import tkinter as tk
+
+from components.sidebar_button import SidebarButton
+
+class Sidebar(tk.Frame):
+
+    WIDTH = 250
+
+    MENU_ITEMS = [
+        "Dashboard",
+        "Livros",
+        "Utilizadores",
+        "EmprÃ©stimos",
+        "DevoluÃ§Ã£o",
+        "Ativos",
+        "HistÃ³rico",
+        "CSV",
+        "EstatÃ­sticas",
+    ]
+
+    def __init__(
+        self,
+        master,
+        on_menu_click
+    ):
+        super().__init__(master)
+
+        self.on_menu_click = on_menu_click
+
+        self.place(x=0, y=0, width=self.WIDTH, relheight=1)
+
+        self.menu_buttons = []
+
+        self.criar_botoes()
+
+    def criar_botoes(self):
+        y = 30
+
+        for texto in self.MENU_ITEMS:
+            
+            botao = SidebarButton(
+                self,
+                text=texto,
+                command=lambda nome=texto: self.on_menu_click(nome)
+            )
+
+            botao.place(x=15, y=y)
+
+            self.menu_buttons.append(botao)
+
+            y += 55
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\components\sidebar_button.py ===
+import tkinter as tk
+
+
+class SidebarButton(tk.Button):
+
+    def __init__(
+        self,
+        master,
+        text,
+        command=None
+    ):
+
+        super().__init__(
+            master,
+            text=text,
+            command=command,
+            relief="flat",
+            borderwidth=0,
+            highlightthickness=0,
+            cursor="hand2",
+            anchor="w",
+            padx=15,
+            font=("Segoe UI", 11, "bold"),
+            bg="#FFFFFF",
+            activebackground="#F5F5F5",
+            fg="#0D47A1",
+            activeforeground="#0D47A1"
+        )
+
+        self.configure(
+            width=20,
+            height=2
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\components\topbar.py ===
+import tkinter as tk
+
+
+class TopBar(tk.Frame):
+
+    HEIGHT = 70
+
+    def __init__(self, master):
+
+        super().__init__(
+            master,
+            height=self.HEIGHT,
+            bg="#334155"
+        )
+
+        self.place(
+            x=250,
+            y=0,
+            relwidth=1,
+            width=-250
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\controllers\dashboard_controller.py ===
+class DashboardController:
+
+    def __init__(self):
+
+        pass
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\theme\config.py ===
+CURRENT_THEME = "porto"
+
+WINDOW_WIDTH = 1280
+WINDOW_HEIGHT = 720
+
+WINDOW_TITLE = "Biblioteca Porto"
+
+BACKGROUNDS = {
+    "dashboard": "bg_01_dashboard.png",
+    "livros": "bg_02_livros.png",
+    "utilizadores": "bg_03_utilizadores.png",
+    "emprestimos": "bg_04_emprestimos.png",
+    "devolucao": "bg_05-devolucao.png",
+    "ativos": "bg_06-ativos.png",
+    "historico": "bg_07_historico.png",
+    "csv": "bg_08_csv.png",
+    "estatisticas": "bg_09-estatistica.png",
+}
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\theme\theme_manager.py ===
+from pathlib import Path
+
+
+class ThemeManager:
+
+    def __init__(self, theme_name: str):
+        self.theme_path = Path(__file__).parent / theme_name
+
+    def get_background(self, screen: str):
+        return self.theme_path / f"{screen}.png"
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\theme\__init__.py ===
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\utils\navigator.py ===
+class Navigator:
+
+    def __init__(self, screen_manager):
+
+        self.screen_manager = screen_manager
+
+        self.routes = {}
+
+    def register(
+        self,
+        name,
+        view
+    ):
+
+        self.routes[name] = view
+
+    def open(self, name):
+
+        view = self.routes.get(name)
+
+        if view is not None:
+
+            self.screen_manager.show(view)
+            
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\utils\screen_manager.py ===
+class ScreenManager:
+
+    def __init__(self, master, theme):
+
+        self.master = master
+        self.theme = theme
+        self.current_view = None
+
+    def show(self, view_class):
+
+        if self.current_view is not None:
+            self.current_view.destroy()
+
+        self.current_view = view_class(
+            self.master,
+            self.theme,
+            self
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\ativos_view.py ===
+from views.base_module_view import BaseModuleView
+
+
+class AtivosView(BaseModuleView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            screen_manager,
+            "ativos"
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\base_module_view.py ===
+from views.base_view import BaseView
+
+from components.sidebar import Sidebar
+from components.topbar import TopBar
+
+
+class BaseModuleView(BaseView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager,
+        background
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            background
+        )
+
+        self.screen_manager = screen_manager
+
+        self.sidebar = Sidebar(
+            self,
+            self.on_menu_click
+        )
+
+        self.topbar = TopBar(self)
+
+    def on_menu_click(
+        self,
+        menu
+    ):
+
+        pass
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\base_view.py ===
+import tkinter as tk
+
+from PIL import Image, ImageTk
+
+from theme.config import (
+    WINDOW_HEIGHT,
+    WINDOW_WIDTH,
+)
+
+
+class BaseView(tk.Frame):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        background
+    ):
+
+        super().__init__(master)
+
+        self.theme = theme
+
+        self.place(
+            x=0,
+            y=0,
+            width=WINDOW_WIDTH,
+            height=WINDOW_HEIGHT
+        )
+
+        caminho = self.theme.get_background(background)
+
+        imagem = Image.open(caminho)
+        imagem = imagem.resize((WINDOW_WIDTH, WINDOW_HEIGHT))
+
+        self.background = ImageTk.PhotoImage(imagem)
+
+        self.label_background = tk.Label(
+            self,
+            image=self.background
+        )
+
+        self.label_background.place(
+            x=0,
+            y=0,
+            relwidth=1,
+            relheight=1
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\csv_view.py ===
+from views.base_module_view import BaseModuleView
+
+
+class CsvView(BaseModuleView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            screen_manager,
+            "csv"
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\dashboard_view.py ===
+from views.base_view import BaseView
+
+from components.sidebar import Sidebar
+from components.topbar import TopBar
+from components.card import Card
+from components.quick_action_button import QuickActionButton
+from components.activity_panel import ActivityPanel
+from controllers.dashboard_controller import DashboardController
+from views.livros_view import LivrosView
+
+
+class DashboardView(BaseView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            "dashboard"
+        )
+
+        self.screen_manager = screen_manager
+
+        self.controller = DashboardController()
+
+        self.sidebar = Sidebar(
+            self,
+            self.on_menu_click
+        )
+
+        self.topbar = TopBar(self)
+
+        self.card_livros = Card(
+            self,
+            x=280,
+            y=172,
+            width=220,
+            height=120,
+            command=lambda: self.screen_manager.show(
+                LivrosView  
+            )
+        )
+       
+        self.card_utilizadores = Card(
+            self,
+            x=510,
+            y=172,
+            width=220,
+            height=120
+        )
+
+        self.card_emprestimos = Card(
+            self,
+            x=740,
+            y=172,
+            width=220,
+            height=120
+        )
+
+        self.card_historico = Card(
+            self,
+            x=970,
+            y=172,
+            width=220,
+            height=120
+        )
+
+        self.quick_add_book = QuickActionButton(
+            self,
+            x=280,
+            y=345,
+            width=105,
+            height=100
+        )
+
+        self.quick_search_book = QuickActionButton(
+            self,
+            x=410,
+            y=345,
+            width=105,
+            height=100
+        )
+
+        self.quick_loan = QuickActionButton(
+            self,
+            x=535,
+            y=345,
+            width=110,
+            height=100
+        )
+
+        self.quick_return = QuickActionButton(
+            self,
+            x=670,
+            y=345,
+            width=100,
+            height=100
+        )
+
+        self.quick_users = QuickActionButton(
+            self,
+            x=795,
+            y=345,
+            width=95,
+            height=100
+        )
+
+        self.quick_active = QuickActionButton(
+            self,
+            x=915,
+            y=345,
+            width=95,
+            height=100
+        )
+
+        self.quick_history = QuickActionButton(
+            self,
+            x=1030,
+            y=345,
+            width=95,
+            height=100
+        )
+
+        self.quick_statistics = QuickActionButton(
+            self,
+            x=1150,
+            y=345,
+            width=95,
+            height=100
+        )
+
+    def on_menu_click(self, menu):
+
+        print(menu)
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\devolucao_view.py ===
+from views.base_module_view import BaseModuleView
+
+
+class DevolucaoView(BaseModuleView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            screen_manager,
+            "devolucao"
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\emprestimos_view.py ===
+from views.base_module_view import BaseModuleView
+
+
+class EmprestimosView(BaseModuleView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            screen_manager,
+            "emprestimos"
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\estatisticas_view.py ===
+from views.base_module_view import BaseModuleView
+
+
+class EstatisticasView(BaseModuleView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            screen_manager,
+            "estatisticas"
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\historico_view.py ===
+from views.base_module_view import BaseModuleView
+
+
+class HistoricoView(BaseModuleView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            screen_manager,
+            "historico"
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\livros_view.py ===
+from views.base_module_view import BaseModuleView
+
+
+class LivrosView(BaseModuleView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            screen_manager,
+            "livros"
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\utilizadores_view.py ===
+from views.base_module_view import BaseModuleView
+
+
+class UtilizadoresView(BaseModuleView):
+
+    def __init__(
+        self,
+        master,
+        theme,
+        screen_manager
+    ):
+
+        super().__init__(
+            master,
+            theme,
+            screen_manager,
+            "utilizadores"
+        )
+
+=== FIM DO ARQUIVO ===
+
+
+=== INÍCIO DO ARQUIVO: C:\Users\fcesa\Documents\github\biblioteca-porto\views\__init__.py ===
+import tkinter as tk
+
+from PIL import Image, ImageTk
+
+from theme.theme_manager import ThemeManager
+from theme.config import WINDOW_WIDTH, WINDOW_HEIGHT
+
+
+class BaseView(tk.Frame):
+
+    def __init__(self, master, background):
+
+        super().__init__(master)
+
+        self.place(
+            x=0,
+            y=0,
+            width=WINDOW_WIDTH,
+            height=WINDOW_HEIGHT
+        )
+
+        self.screen_manager = ScreenManager()
+
+        self.screen_manager.show(
+            DashboardView,
+            self.root
+        )
+
+=== FIM DO ARQUIVO ===
+
+

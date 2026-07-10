@@ -28,7 +28,10 @@ class DashboardView(BaseView):
 
         self.controller = DashboardController()
 
-        self.sidebar = Sidebar(self)
+        self.sidebar = Sidebar(
+            self,
+            self.on_menu_click
+        )
 
         self.topbar = TopBar(self)
 
@@ -130,3 +133,7 @@ class DashboardView(BaseView):
             width=95,
             height=100
         )
+
+    def on_menu_click(self, menu):
+
+        print(menu)
