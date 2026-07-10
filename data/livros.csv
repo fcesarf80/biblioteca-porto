@@ -1,0 +1,41 @@
+id,titulo,autor,categoria,ano,isbn,disponivel
+0001,O Livro da Lei,Aleister Crowley,Filosofia,2010,978-85-3020-120-5,True
+0002,Drácula,Bram Stoker,Terror,2018,978-85-3006-106-5,True
+0003,Perto do Coração Selvagem,Clarice Lispector,Romance,2019,978-85-3253-162-9,True
+0004,A Paixão Segundo G.H.,Clarice Lispector,Romance,2018,978-85-3251-543-8,True
+0005,A Hora da Estrela,Clarice Lispector,Romance,2017,978-85-3250-812-6,True
+0006,Laços de Família,Clarice Lispector,Contos,2021,978-65-5532-024-4,True
+0007,A Divina Comédia,Dante Alighieri,Épico,2011,978-85-3002-102-5,True
+0008,Wuthering Heights,Emily Brontë,Romance,2016,978-85-3033-133-5,True
+0009,Xica da Silva,Felício dos Santos,Histórico,2018,978-85-3034-134-5,True
+0010,Os Irmãos Karamazov,Fiódor Dostoiévski,Romance,2018,978-85-3025-125-5,True
+0011,Noites Brancas,Fiódor Dostoiévski,Romance,2012,978-85-3016-116-5,True
+0012,A Metamorfose,Franz Kafka,Ficção,2015,978-85-3003-103-5,True
+0013,Cem Anos de Solidão,Gabriel García Márquez,Romance,2019,978-85-3005-105-5,True
+0014,1984,George Orwell,Distopia,2009,978-85-3001-101-5,True
+0015,Yvone,George Sand,Romance,2014,978-85-3035-135-5,True
+0016,São Bernardo,Graciliano Ramos,Romance,2015,978-85-3028-128-5,True
+0017,Vidas Secas,Graciliano Ramos,Drama,2019,978-85-3032-132-5,True
+0018,Moby Dick,Herman Melville,Aventura,2015,978-85-3015-115-5,True
+0019,Ilíada,Homero,Épico,2013,978-85-3011-111-5,True
+0020,O Hobbit,J. R. R. Tolkien,Fantasia,2013,978-85-3018-118-5,True
+0021,Shōgun,James Clavell,Romance,2011,978-85-3029-129-5,True
+0022,Ulisses,James Joyce,Ficção,2012,978-85-3031-131-5,True
+0023,Orgulho e Preconceito,Jane Austen,Romance,2010,978-85-3024-124-5,True
+0024,O Ser e o Nada,Jean-Paul Sartre,Filosofia,2008,978-85-3022-122-5,True
+0025,O Mundo de Sofia,Jostein Gaarder,Romance,2015,978-85-3021-121-5,True
+0026,Grande Sertão: Veredas,João Guimarães Rosa,Romance,2019,978-85-3009-109-5,True
+0027,Triste Fim de Policarpo Quaresma,Lima Barreto,Sátira,2011,978-85-3030-130-5,True
+0028,Quincas Borba,Machado de Assis,Romance,2012,978-85-3027-127-5,True
+0029,As Aventuras de Huckleberry Finn,Mark Twain,Aventura,2012,978-85-3004-104-5,True
+0030,Frankenstein,Mary Shelley,Terror,2017,978-85-3008-108-5,True
+0031,"Zorba, o Grego",Nikos Kazantzakis,Romance,2016,978-85-3036-136-5,True
+0032,Light My Fire,Ray Manzarek,Biografia,1998,9780425217771,True
+0033,It,Stephen King,Terror,2014,978-85-3012-112-5,True
+0034,O Iluminado,Stephen King,Terror,2017,978-85-3019-119-5,True
+0035,Ou/Ou,Søren Kierkegaard,Filosofia,2013,978-85-3026-126-5,True
+0036,O Silêncio dos Inocentes,Thomas Harris,Terror,2014,978-85-3023-123-5,True
+0037,Lolita,Vladimir Nabokov,Romance,2011,978-85-3014-114-5,True
+0038,O Exorcista,William Peter Blatty,Terror,2019,978-85-3017-117-5,True
+0039,Hamlet,William Shakespeare,Drama,2016,978-85-3010-110-5,True
+0040,King Lear,William Shakespeare,Tragédia,2016,978-85-3013-113-5,True
