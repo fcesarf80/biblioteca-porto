@@ -1,7 +1,7 @@
-from views.base_view import BaseView
+from views.base_module_view import BaseModuleView
 
 
-class LivrosView(BaseView):
+class LivrosView(BaseModuleView):
 
     def __init__(
         self,
@@ -13,7 +13,6 @@ class LivrosView(BaseView):
         super().__init__(
             master,
             theme,
+            screen_manager,
             "livros"
         )
-
-        self.screen_manager = screen_manager
