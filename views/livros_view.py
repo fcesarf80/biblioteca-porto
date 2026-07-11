@@ -1,27 +1,17 @@
+from components.action_button import ActionButton
 from components.form_entry import FormEntry
 from components.form_label import FormLabel
 from components.table import Table
+from models.livro import Livro
 from services.livro_service import LivroService
 from views.base_module_view import BaseModuleView
-from components.action_button import ActionButton
-from models.livro import Livro
 
 
 class LivrosView(BaseModuleView):
 
-    def __init__(
-        self,
-        master,
-        theme,
-        screen_manager
-    ):
+    def __init__(self, master, theme, screen_manager):
 
-        super().__init__(
-            master,
-            theme,
-            screen_manager,
-            "livros"
-        )
+        super().__init__(master, theme, screen_manager, "livros")
 
         self.livro_service = LivroService()
 
@@ -51,14 +41,11 @@ class LivrosView(BaseModuleView):
             text="Título:",
             x=FORM_LABEL_X,
             y=FORM_TITLE_Y,
-            width=FORM_LABEL_WIDTH
+            width=FORM_LABEL_WIDTH,
         )
 
         self.entry_titulo = FormEntry(
-            self,
-            x=FORM_ENTRY_X,
-            y=FORM_TITLE_Y,
-            width=FORM_ENTRY_WIDTH
+            self, x=FORM_ENTRY_X, y=FORM_TITLE_Y, width=FORM_ENTRY_WIDTH
         )
 
         self.label_autor = FormLabel(
@@ -66,14 +53,11 @@ class LivrosView(BaseModuleView):
             text="Autor:",
             x=FORM_LABEL_X,
             y=FORM_AUTHOR_Y,
-            width=FORM_LABEL_WIDTH
+            width=FORM_LABEL_WIDTH,
         )
 
         self.entry_autor = FormEntry(
-            self,
-            x=FORM_ENTRY_X,
-            y=FORM_AUTHOR_Y,
-            width=FORM_ENTRY_WIDTH
+            self, x=FORM_ENTRY_X, y=FORM_AUTHOR_Y, width=FORM_ENTRY_WIDTH
         )
 
         self.label_categoria = FormLabel(
@@ -81,14 +65,11 @@ class LivrosView(BaseModuleView):
             text="Categoria:",
             x=FORM_LABEL_X,
             y=FORM_CATEGORY_Y,
-            width=FORM_LABEL_WIDTH
+            width=FORM_LABEL_WIDTH,
         )
 
         self.entry_categoria = FormEntry(
-            self,
-            x=FORM_ENTRY_X,
-            y=FORM_CATEGORY_Y,
-            width=FORM_ENTRY_WIDTH
+            self, x=FORM_ENTRY_X, y=FORM_CATEGORY_Y, width=FORM_ENTRY_WIDTH
         )
 
         self.label_quantidade = FormLabel(
@@ -96,15 +77,12 @@ class LivrosView(BaseModuleView):
             text="Quantidade:",
             x=FORM_LABEL_X,
             y=FORM_QUANTITY_Y,
-            width=FORM_LABEL_WIDTH
+            width=FORM_LABEL_WIDTH,
         )
 
         self.entry_quantidade = FormEntry(
-            self,
-            x=FORM_ENTRY_X,
-            y=FORM_QUANTITY_Y,
-            width=FORM_QUANTITY_WIDTH
-        )            
+            self, x=FORM_ENTRY_X, y=FORM_QUANTITY_Y, width=FORM_QUANTITY_WIDTH
+        )
 
         #
         # Tabela
@@ -124,15 +102,12 @@ class LivrosView(BaseModuleView):
             x=TABLE_X,
             y=TABLE_Y,
             width=TABLE_WIDTH,
-            height=TABLE_HEIGHT
+            height=TABLE_HEIGHT,
         )
-                   
+
         self.carregar_livros()
 
-        self.table.bind(
-            "<<TreeviewSelect>>",
-            self.selecionar_livro
-        )
+        self.table.bind("<<TreeviewSelect>>", self.selecionar_livro)
 
         #
         # Botões
@@ -156,7 +131,7 @@ class LivrosView(BaseModuleView):
             width=BUTTON_WIDTH,
             height=BUTTON_HEIGHT,
             background="#79B8F3",
-            command=self.adicionar_livro
+            command=self.adicionar_livro,
         )
 
         self.button_edit = ActionButton(
@@ -167,7 +142,7 @@ class LivrosView(BaseModuleView):
             width=BUTTON_WIDTH,
             height=BUTTON_HEIGHT,
             background="#E6D5B8",
-            command=self.editar_livro
+            command=self.editar_livro,
         )
 
         self.button_remove = ActionButton(
@@ -178,8 +153,8 @@ class LivrosView(BaseModuleView):
             width=BUTTON_WIDTH,
             height=BUTTON_HEIGHT,
             background="#F4B6C2",
-            command=self.remover_livro
-        )   
+            command=self.remover_livro,
+        )
 
         self.button_search = ActionButton(
             self,
@@ -189,9 +164,9 @@ class LivrosView(BaseModuleView):
             width=BUTTON_WIDTH,
             height=BUTTON_HEIGHT,
             background="#9AD99A",
-            command=self.pesquisar_livro
+            command=self.pesquisar_livro,
         )
-    
+
     def carregar_livros(self):
         self.table.clear()
         livros = self.livro_service.listar()
@@ -205,7 +180,7 @@ class LivrosView(BaseModuleView):
                     livro.categoria,
                     livro.ano,
                     livro.isbn,
-                    "Sim" if livro.disponivel else "Não"
+                    "Sim" if livro.disponivel else "Não",
                 )
             )
 
@@ -218,7 +193,7 @@ class LivrosView(BaseModuleView):
             categoria=self.entry_categoria.get_value(),
             ano=2026,
             isbn="",
-            disponivel=True
+            disponivel=True,
         )
 
         self.livro_service.adicionar(livro)
@@ -231,13 +206,71 @@ class LivrosView(BaseModuleView):
         self.entry_quantidade.clear()
 
     def editar_livro(self):
-        print("Editar")
+
+        if not hasattr(self, "livro_id"):
+            return
+
+        livro = Livro(
+            id=self.livro_id,
+            titulo=self.entry_titulo.get_value(),
+            autor=self.entry_autor.get_value(),
+            categoria=self.entry_categoria.get_value(),
+            ano=2026,
+            isbn="",
+            disponivel=True,
+        )
+
+        self.livro_service.editar(livro)
+
+        self.carregar_livros()
+
+        self.entry_titulo.clear()
+        self.entry_autor.clear()
+        self.entry_categoria.clear()
+        self.entry_quantidade.clear()
+
+        del self.livro_id
 
     def remover_livro(self):
-        print("Remover")
+
+        if not hasattr(self, "livro_id"):
+            return
+
+        self.livro_service.remover(self.livro_id)
+
+        self.carregar_livros()
+
+        self.entry_titulo.clear()
+        self.entry_autor.clear()
+        self.entry_categoria.clear()
+        self.entry_quantidade.clear()
+
+        del self.livro_id
 
     def pesquisar_livro(self):
-        print("Pesquisar")
+
+        texto = self.entry_titulo.get_value().strip()
+
+        if not texto:
+            texto = self.entry_autor.get_value().strip()
+
+        livros = self.livro_service.pesquisar(texto)
+
+        self.table.clear()
+
+        for livro in livros:
+
+            self.table.add_row(
+                (
+                    livro.id,
+                    livro.titulo,
+                    livro.autor,
+                    livro.categoria,
+                    livro.ano,
+                    livro.isbn,
+                    "Sim" if livro.disponivel else "Não"
+                )
+            )
 
     def selecionar_livro(self, event):
 
@@ -248,6 +281,7 @@ class LivrosView(BaseModuleView):
 
         valores = self.table.item(item[0], "values")
 
+        self.livro_id = valores[0]
         self.entry_titulo.set_value(valores[1])
         self.entry_autor.set_value(valores[2])
         self.entry_categoria.set_value(valores[3])

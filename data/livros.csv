@@ -39,4 +39,4 @@ id,titulo,autor,categoria,ano,isbn,disponivel
 0038,O Exorcista,William Peter Blatty,Terror,2019,978-85-3017-117-5,True
 0039,Hamlet,William Shakespeare,Drama,2016,978-85-3010-110-5,True
 0040,King Lear,William Shakespeare,Tragédia,2016,978-85-3013-113-5,True
-0041,Teste,Cesar,Programação,2026,,True
+0042,Teste2,CesarFarias,Programação,2026,,True

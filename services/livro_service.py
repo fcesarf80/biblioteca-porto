@@ -85,27 +85,64 @@ class LivroService:
             self.FIELDNAMES
         )
 
-        def editar(
-            self,
+    def editar(
+        self,
+        livro
+    ):
+
+        registros = self.csv_service.read()
+
+        for registro in registros:
+
+            if registro["id"] == livro.id:
+
+                registro["titulo"] = livro.titulo
+                registro["autor"] = livro.autor
+                registro["categoria"] = livro.categoria
+                registro["ano"] = livro.ano
+                registro["isbn"] = livro.isbn
+                registro["disponivel"] = str(livro.disponivel)
+
+                break
+
+        self.csv_service.write(
+            registros,
+            self.FIELDNAMES
+        )
+
+    def remover(
+        self,
+        livro_id
+    ):
+
+        registros = self.csv_service.read()
+
+        registros = [
+            registro
+            for registro in registros
+            if registro["id"] != livro_id
+        ]
+
+        self.csv_service.write(
+            registros,
+            self.FIELDNAMES
+        )
+
+    def pesquisar(self, texto):
+
+        texto = texto.lower().strip()
+
+        livros = self.listar()
+
+        if not texto:
+
+            return livros
+
+        return [
             livro
-        ):
-
-            registros = self.csv_service.read()
-
-            for registro in registros:
-
-                if registro["id"] == livro.id:
-
-                    registro["titulo"] = livro.titulo
-                    registro["autor"] = livro.autor
-                    registro["categoria"] = livro.categoria
-                    registro["ano"] = livro.ano
-                    registro["isbn"] = livro.isbn
-                    registro["disponivel"] = str(livro.disponivel)
-
-                    break
-
-            self.csv_service.write(
-                registros,
-                self.FIELDNAMES
+            for livro in livros
+            if (
+                texto in livro.titulo.lower()
+                or texto in livro.autor.lower()
             )
+        ]
