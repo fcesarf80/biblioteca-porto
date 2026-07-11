@@ -84,3 +84,28 @@ class LivroService:
             registros,
             self.FIELDNAMES
         )
+
+        def editar(
+            self,
+            livro
+        ):
+
+            registros = self.csv_service.read()
+
+            for registro in registros:
+
+                if registro["id"] == livro.id:
+
+                    registro["titulo"] = livro.titulo
+                    registro["autor"] = livro.autor
+                    registro["categoria"] = livro.categoria
+                    registro["ano"] = livro.ano
+                    registro["isbn"] = livro.isbn
+                    registro["disponivel"] = str(livro.disponivel)
+
+                    break
+
+            self.csv_service.write(
+                registros,
+                self.FIELDNAMES
+            )
