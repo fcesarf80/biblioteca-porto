@@ -6,6 +6,16 @@ class LivroService:
 
     FILE_PATH = "data/livros.csv"
 
+    FIELDNAMES = (
+        "id",
+        "titulo",
+        "autor",
+        "categoria",
+        "ano",
+        "isbn",
+        "disponivel"
+    )
+
     def __init__(self):
 
         self.csv_service = CSVService(
@@ -35,3 +45,42 @@ class LivroService:
             )
 
         return livros
+
+    def proximo_id(self):
+
+        livros = self.listar()
+
+        if not livros:
+
+            return "0001"
+
+        ultimo_id = max(
+            int(livro.id)
+            for livro in livros
+        )
+
+        return f"{ultimo_id + 1:04d}"
+
+    def adicionar(
+        self,
+        livro
+    ):
+
+        registros = self.csv_service.read()
+
+        registros.append(
+            {
+                "id": livro.id,
+                "titulo": livro.titulo,
+                "autor": livro.autor,
+                "categoria": livro.categoria,
+                "ano": livro.ano,
+                "isbn": livro.isbn,
+                "disponivel": str(livro.disponivel)
+            }
+        )
+
+        self.csv_service.write(
+            registros,
+            self.FIELDNAMES
+        )
