@@ -6,6 +6,8 @@ class FormComboBox(ttk.Combobox):
 
     DEFAULT_FONT = ("Segoe UI", 10)
 
+    style_created = False
+
     def __init__(
         self,
         master,
@@ -15,11 +17,37 @@ class FormComboBox(ttk.Combobox):
         width
     ):
 
+        if not FormComboBox.style_created:
+
+            style = ttk.Style(master)
+
+            style.theme_use("default")
+
+            style.configure(
+                "Custom.TCombobox",
+                foreground="black",
+                fieldbackground="white",
+                background="white",
+                insertcolor="black",
+                borderwidth=1,
+                relief="solid"
+            )
+
+            style.map(
+                "Custom.TCombobox",
+                fieldbackground=[("readonly", "white")],
+                background=[("readonly", "white")],
+                foreground=[("readonly", "black")]
+            )
+
+            FormComboBox.style_created = True
+
         super().__init__(
             master,
             values=values,
             state="readonly",
-            font=self.DEFAULT_FONT
+            font=self.DEFAULT_FONT,
+            style="Custom.TCombobox"
         )
 
         self.place(

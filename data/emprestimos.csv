@@ -1,1 +1,2 @@
 id,livro_id,utilizador_id,data_emprestimo,data_prevista,data_devolucao,ativo
+0001,0009,0004,12/07/2026,19/07/2026,12/07/2026,False
