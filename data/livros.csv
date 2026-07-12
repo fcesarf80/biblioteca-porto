@@ -10,7 +10,7 @@ id,titulo,autor,categoria,ano,isbn,disponivel
 0009,Xica da Silva,Felício dos Santos,Histórico,2018,978-85-3034-134-5,True
 0010,Os Irmãos Karamazov,Fiódor Dostoiévski,Romance,2018,978-85-3025-125-5,True
 0011,Noites Brancas,Fiódor Dostoiévski,Romance,2012,978-85-3016-116-5,True
-0012,A Metamorfose,Franz Kafka,Ficção,2015,978-85-3003-103-5,True
+0012,A Metamorfose,Franz Kafka,Ficção,2015,978-85-3003-103-5,False
 0013,Cem Anos de Solidão,Gabriel García Márquez,Romance,2019,978-85-3005-105-5,True
 0014,1984,George Orwell,Distopia,2009,978-85-3001-101-5,True
 0015,Yvone,George Sand,Romance,2014,978-85-3035-135-5,True
@@ -36,7 +36,7 @@ id,titulo,autor,categoria,ano,isbn,disponivel
 0035,Ou/Ou,Søren Kierkegaard,Filosofia,2013,978-85-3026-126-5,True
 0036,O Silêncio dos Inocentes,Thomas Harris,Terror,2014,978-85-3023-123-5,True
 0037,Lolita,Vladimir Nabokov,Romance,2011,978-85-3014-114-5,True
-0038,O Exorcista,William Peter Blatty,Terror,2019,978-85-3017-117-5,True
+0038,O Exorcista,William Peter Blatty,Terror,2019,978-85-3017-117-5,False
 0039,Hamlet,William Shakespeare,Drama,2016,978-85-3010-110-5,True
 0040,King Lear,William Shakespeare,Tragédia,2016,978-85-3013-113-5,True
 0042,Teste2,CesarFarias,Programação,2026,,True
