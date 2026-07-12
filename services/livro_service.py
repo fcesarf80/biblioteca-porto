@@ -46,6 +46,19 @@ class LivroService:
 
         return livros
 
+    def buscar_por_id(
+        self,
+        livro_id
+    ):
+
+        for livro in self.listar():
+
+            if livro.id == livro_id:
+
+                return livro
+
+        return None
+
     def proximo_id(self):
 
         livros = self.listar()
@@ -101,7 +114,9 @@ class LivroService:
                 registro["categoria"] = livro.categoria
                 registro["ano"] = livro.ano
                 registro["isbn"] = livro.isbn
-                registro["disponivel"] = str(livro.disponivel)
+                registro["disponivel"] = str(
+                    livro.disponivel
+                )
 
                 break
 
@@ -128,7 +143,10 @@ class LivroService:
             self.FIELDNAMES
         )
 
-    def pesquisar(self, texto):
+    def pesquisar(
+        self,
+        texto
+    ):
 
         texto = texto.lower().strip()
 

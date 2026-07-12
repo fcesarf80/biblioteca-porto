@@ -37,7 +37,20 @@ class UtilizadorService:
             )
 
         return utilizadores
-    
+
+    def buscar_por_id(
+        self,
+        utilizador_id
+    ):
+
+        for utilizador in self.listar():
+
+            if utilizador.id == utilizador_id:
+
+                return utilizador
+
+        return None
+
     def proximo_id(self):
 
         utilizadores = self.listar()
@@ -52,11 +65,11 @@ class UtilizadorService:
         )
 
         return f"{ultimo_id + 1:04d}"
-    
+
     def adicionar(
-    self,
-    utilizador
-):
+        self,
+        utilizador
+    ):
 
         registros = self.csv_service.read()
 
@@ -75,9 +88,9 @@ class UtilizadorService:
         )
 
     def editar(
-    self,
-    utilizador
-):
+        self,
+        utilizador
+    ):
 
         registros = self.csv_service.read()
 

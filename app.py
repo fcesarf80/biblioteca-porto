@@ -10,6 +10,7 @@ from utils.screen_manager import ScreenManager
 from views.dashboard_view import DashboardView
 from theme.config import CURRENT_THEME
 from theme.theme_manager import ThemeManager
+from pathlib import Path
 
 
 class App:
@@ -26,6 +27,10 @@ class App:
             )
         )
 
+        self.root.iconbitmap(
+            "theme/icones/cinel.ico"
+        )
+        
         self.root.resizable(False, False)
 
         self.theme = ThemeManager(CURRENT_THEME)

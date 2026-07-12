@@ -15,18 +15,6 @@ class UtilizadoresView(BaseModuleView):
 
         self.utilizador_service = UtilizadorService()
 
-        TABLE_ID_WIDTH = 50
-        TABLE_NAME_WIDTH = 260
-        TABLE_EMAIL_WIDTH = 390
-        TABLE_CONTACT_WIDTH = 180
-
-        columns = (
-            ("ID", TABLE_ID_WIDTH, "center"),
-            ("Nome", TABLE_NAME_WIDTH, "w"),
-            ("Email", TABLE_EMAIL_WIDTH, "w"),
-            ("Contato", TABLE_CONTACT_WIDTH, "center"),
-        )
-
         #
         # Layout Constants
         #
@@ -36,8 +24,7 @@ class UtilizadoresView(BaseModuleView):
 
         FORM_LABEL_WIDTH = 90
         FORM_ENTRY_WIDTH = 305
-        FORM_QUANTITY_WIDTH = 100
-
+        
         FORM_NAME_Y = 115
         FORM_EMAIL_Y = 148
         FORM_CONTACT_Y = 181
@@ -207,6 +194,9 @@ class UtilizadoresView(BaseModuleView):
         self.utilizador_service.adicionar(utilizador)
 
         self.carregar_utilizadores()
+        self.limpar_formulario()
+
+    def limpar_formulario(self):
 
         self.entry_nome.clear()
         self.entry_email.clear()
