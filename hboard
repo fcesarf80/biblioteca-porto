@@ -1,0 +1,34 @@
+[33ma10c047[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m feat: cria estrutura basica da tela estatistica
+[33m3a18740[m Implementa o básico da tela de histórico
+[33m7369355[m Implementado fluxo completo de empréstimo
+[33mb408365[m style: atualiza o ícone principal do programa
+[33mfa90f02[m Implementa CRUD completo do módulo Utilizadores
+[33m89ccd93[m git commit -m "Cria a base de dados em CSV com as informações de livros"
+[33m15950fa[m Cria a base de dados em CSV com as informações de utilizadores
+[33mef42d5b[m feat: finalizada a funcionalidade adicionar
+[33m735e753[m refactor(css): otimizar carregamento e posicionamento do background
+[33m82b5543[m feat: conclui navegação da sprint 1
+[33mdd82092[m feat: implementa navegação da sidebar com ScreenManager
+[33m42db50c[m feat: adicionar views dos módulos
+[33m970fb49[m feat: adicionar Navigator
+[33m47b3ff5[m refactor: reutilizar BaseModuleView em LivrosView
+[33m9094801[m feat: adicionar BaseModuleView
+[33maccf965[m feat: implementar primeira navegação entre telas
+[33m19ec7f2[m refactor: preparar arquitetura para navegação entre telas
+[33m9f2ae0d[m refactor: preparar arquitetura para navegação entre telas
+[33mcd7dbd8[m feat: adicionar componente TopBar
+[33mb1c0e0f[m refactor: gerar botões da Sidebar dinamicamente
+[33m7bb5214[m feat: adicionar componente SidebarButton
+[33mff7bf8c[m feat: adicionar componente Sidebar
+[33m51bac19[m refactor: simplificar navegação com ScreenManager
+[33mcb30b69[m refactor: compartilhar ThemeManager entre as telas
+[33m478b92c[m refactor: centralizar ThemeManager na aplicação
+[33m1f09035[m refactor: parametrizar ThemeManager
+[33m76686cd[m refactor: criar arquitetura base do Biblioteca Porto
+[33m7a4d7f4[m refactor: organizar arquitetura base da aplicação
+[33m43c184f[m feat: implementar ScreenManager
+[33m589b2bb[m feat: criar DashboardView
+[33me95aa34[m feat: implementar carregamento do tema de fundo
+[33me1dbbe2[m feat: implementar configuração inicial de temas
+[33m8b35160[m feat: criar janela principal da aplicação
+[33m1c9ff4a[m chore: criar estrutura inicial do projeto

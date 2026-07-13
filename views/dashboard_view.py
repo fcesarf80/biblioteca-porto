@@ -31,171 +31,81 @@ class DashboardView(BaseView):
         "Estatísticas": EstatisticasView,
     }
 
-    def __init__(
-        self,
-        master,
-        theme,
-        screen_manager
-    ):
-
-        super().__init__(
-            master,
-            theme,
-            "dashboard"
-        )
+    def __init__(self, master, theme, screen_manager):
+        super().__init__(master, theme, "dashboard")
 
         self.screen_manager = screen_manager
-
         self.controller = DashboardController()
 
-        self.sidebar = Sidebar(
-            self,
-            self.on_menu_click
-        )
+        self.sidebar = Sidebar(self, self.on_menu_click)
+        self.topbar = TopBar(self, self.on_theme_change)
 
-        self.topbar = TopBar(self)
-
+        # Cards principais
         self.card_livros = Card(
-            self,
-            x=280,
-            y=172,
-            width=220,
-            height=120,
-            command=lambda: self.screen_manager.show(
-                LivrosView
-            )
+            self, x=280, y=172, width=220, height=120,
+            command=lambda: self.screen_manager.show(LivrosView)
         )
-
         self.card_utilizadores = Card(
-            self,
-            x=510,
-            y=172,
-            width=220,
-            height=120,
-            command=lambda: self.screen_manager.show(
-                UtilizadoresView
-            )
+            self, x=510, y=172, width=220, height=120,
+            command=lambda: self.screen_manager.show(UtilizadoresView)
         )
-
         self.card_emprestimos = Card(
-            self,
-            x=740,
-            y=172,
-            width=220,
-            height=120,
-            command=lambda: self.screen_manager.show(
-                EmprestimosView
-            )
+            self, x=740, y=172, width=220, height=120,
+            command=lambda: self.screen_manager.show(EmprestimosView)
         )
-
         self.card_historico = Card(
-            self,
-            x=970,
-            y=172,
-            width=220,
-            height=120,
-            command=lambda: self.screen_manager.show(
-                HistoricoView
-            )
+            self, x=970, y=172, width=220, height=120,
+            command=lambda: self.screen_manager.show(HistoricoView)
         )
 
+        # Botões de ação rápida (Quick Action)
         self.quick_add_book = QuickActionButton(
-            self,
-            x=280,
-            y=345,
-            width=105,
-            height=100,
-            command=lambda: self.screen_manager.show(
-                LivrosView
-            )
+            self, x=280, y=345, width=105, height=100,
+            command=lambda: self.screen_manager.show(LivrosView)
         )
-
         self.quick_search_book = QuickActionButton(
-            self,
-            x=410,
-            y=345,
-            width=105,
-            height=100,
-            command=lambda: self.screen_manager.show(
-                LivrosView
-            )
+            self, x=410, y=345, width=105, height=100,
+            command=lambda: self.screen_manager.show(LivrosView)
         )
-
         self.quick_loan = QuickActionButton(
-            self,
-            x=535,
-            y=345,
-            width=110,
-            height=100,
-            command=lambda: self.screen_manager.show(
-                EmprestimosView
-            )
+            self, x=535, y=345, width=110, height=100,
+            command=lambda: self.screen_manager.show(EmprestimosView)
         )
-
         self.quick_return = QuickActionButton(
-            self,
-            x=670,
-            y=345,
-            width=100,
-            height=100,
-            command=lambda: self.screen_manager.show(
-                DevolucaoView
-            )
+            self, x=670, y=345, width=100, height=100,
+            command=lambda: self.screen_manager.show(DevolucaoView)
         )
-
         self.quick_users = QuickActionButton(
-            self,
-            x=795,
-            y=345,
-            width=95,
-            height=100,
-            command=lambda: self.screen_manager.show(
-                UtilizadoresView
-            )
+            self, x=795, y=345, width=95, height=100,
+            command=lambda: self.screen_manager.show(UtilizadoresView)
         )
-
         self.quick_active = QuickActionButton(
-            self,
-            x=915,
-            y=345,
-            width=95,
-            height=100,
-            command=lambda: self.screen_manager.show(
-                AtivosView
-            )
+            self, x=915, y=345, width=95, height=100,
+            command=lambda: self.screen_manager.show(AtivosView)
         )
-
         self.quick_history = QuickActionButton(
-            self,
-            x=1030,
-            y=345,
-            width=95,
-            height=100,
-            command=lambda: self.screen_manager.show(
-                HistoricoView
-            )
+            self, x=1030, y=345, width=95, height=100,
+            command=lambda: self.screen_manager.show(HistoricoView)
         )
-
         self.quick_statistics = QuickActionButton(
-            self,
-            x=1150,
-            y=345,
-            width=95,
-            height=100,
-            command=lambda: self.screen_manager.show(
-                EstatisticasView
-            )
+            self, x=1150, y=345, width=95, height=100,
+            command=lambda: self.screen_manager.show(EstatisticasView)
         )
 
-    def on_menu_click(
-        self,
-        menu
-    ):
+    def on_theme_change(self, tema):
+        temas = {
+            "Porto": "porto",
+            "Natal": "natal",
+            "São João": "sao_joao",
+        }
 
+        self.theme.set_theme(temas[tema])
+        self.screen_manager.show(DashboardView)
+
+    def on_menu_click(self, menu):
         if menu == "Dashboard":
             return
 
         view = self.ROUTES.get(menu)
-
         if view is not None:
             self.screen_manager.show(view)

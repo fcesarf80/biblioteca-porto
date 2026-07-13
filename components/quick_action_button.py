@@ -10,6 +10,8 @@ class QuickActionButton(tk.Frame):
         y,
         width,
         height,
+        icon="",
+        text="",
         command=None
     ):
 
@@ -28,13 +30,43 @@ class QuickActionButton(tk.Frame):
             y=y
         )
 
+        self.label_icon = tk.Label(
+            self,
+            text=icon,
+            bg="#48E65E",
+            fg="white",
+            font=("Segoe UI Emoji", 28)
+        )
+
+        self.label_icon.place(
+            relx=0.5,
+            y=18,
+            anchor="n"
+        )
+
+        self.label_text = tk.Label(
+            self,
+            text=text,
+            bg="#48E65E",
+            fg="white",
+            font=("Segoe UI", 8)
+        )
+
+        self.label_text.place(
+            relx=0.5,
+            y=68,
+            anchor="n"
+        )
+
         self.button = tk.Button(
             self,
             command=command,
             relief="flat",
             borderwidth=0,
             highlightthickness=0,
-            cursor="hand2"
+            cursor="hand2",
+            bg="#48E65E",
+            activebackground="#48E65E"
         )
 
         self.button.place(
@@ -43,3 +75,5 @@ class QuickActionButton(tk.Frame):
             relwidth=1,
             relheight=1
         )
+
+        self.button.lower()

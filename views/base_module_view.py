@@ -22,12 +22,17 @@ class BaseModuleView(BaseView):
 
         self.screen_manager = screen_manager
 
+        self.background = background
+
         self.sidebar = Sidebar(
             self,
             self.on_menu_click
         )
 
-        self.topbar = TopBar(self)
+        self.topbar = TopBar(
+            self,
+            self.on_theme_change
+        )
 
     def on_menu_click(
         self,
@@ -60,3 +65,22 @@ class BaseModuleView(BaseView):
 
         if view is not None:
             self.screen_manager.show(view)
+
+    def on_theme_change(
+        self,
+        tema
+    ):
+
+        temas = {
+            "Porto": "porto",
+            "Natal": "natal",
+            "São João": "sao_joao",
+        }
+
+        self.theme.set_theme(
+            temas[tema]
+        )
+
+        self.screen_manager.show(
+            self.__class__
+        )
