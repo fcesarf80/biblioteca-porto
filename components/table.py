@@ -26,7 +26,9 @@ class Table(ttk.Treeview):
             "Table.Treeview",
             borderwidth=0,
             relief="flat",
-            highlightthickness=0
+            highlightthickness=0,
+            background="white",
+            fieldbackground="white"
         )
 
         style.configure(

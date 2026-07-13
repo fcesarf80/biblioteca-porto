@@ -5,7 +5,7 @@ class FormLabel(tk.Label):
 
     DEFAULT_FONT = ("Segoe UI", 10, "normal")
     DEFAULT_FOREGROUND = "#05148e"
-    DEFAULT_BACKGROUND = "#FFFFFF"
+    DEFAULT_BACKGROUND = "#F0F0F0"
 
     def __init__(
         self,

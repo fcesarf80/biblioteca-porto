@@ -4,7 +4,7 @@ from tkinter import ttk
 
 class TopBar(tk.Frame):
 
-    HEIGHT = 70
+    HEIGHT = 30
 
     def __init__(
         self,
@@ -14,15 +14,16 @@ class TopBar(tk.Frame):
 
         super().__init__(
             master,
-            height=self.HEIGHT,
-            bg="#334155"
+            bg=master.cget("bg"),
+            bd=0,
+            highlightthickness=0
         )
 
         self.place(
-            x=250,
-            y=0,
-            relwidth=1,
-            width=-250
+            x=1080,
+            y=15,
+            width=150,
+            height=30
         )
 
         self.combo_tema = ttk.Combobox(
@@ -47,8 +48,8 @@ class TopBar(tk.Frame):
         self.combo_tema.set("Porto")
 
         self.combo_tema.place(
-            x=760,
-            y=20,
-            width=150,
-            height=30
+            x=0,
+            y=0,
+            relwidth=1,
+            relheight=1
         )
