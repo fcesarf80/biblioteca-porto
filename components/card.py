@@ -1,4 +1,5 @@
 import tkinter as tk
+from PIL import Image, ImageTk
 
 
 class Card(tk.Frame):
@@ -10,6 +11,7 @@ class Card(tk.Frame):
         y,
         width,
         height,
+        image_path=None,
         command=None
     ):
 
@@ -26,11 +28,31 @@ class Card(tk.Frame):
             y=y
         )
 
+        if image_path:
+
+            imagem = Image.open(image_path)
+            imagem = imagem.resize((width, height))
+
+            self.imagem = ImageTk.PhotoImage(imagem)
+
+            self.background = tk.Label(
+                self,
+                image=self.imagem,
+                bd=0
+            )
+
+            self.background.place(
+                x=0,
+                y=0,
+                relwidth=1,
+                relheight=1
+            )
+
         self.label_valor = tk.Label(
             self,
             text="0",
             font=("Segoe UI", 28, "bold"),
-            bg="#ECECEC",
+            bg="#FDF9F0",
             fg="#1E3A8A"
         )
 
@@ -44,7 +66,7 @@ class Card(tk.Frame):
             self,
             text="",
             font=("Segoe UI", 10),
-            bg="#ECECEC",
+            bg="#FDF9F0",
             fg="#475569"
         )
 
@@ -61,8 +83,8 @@ class Card(tk.Frame):
             borderwidth=0,
             highlightthickness=0,
             cursor="hand2",
-            bg="#ECECEC",
-            activebackground="#ECECEC"
+            bg=self["bg"],
+            activebackground=self["bg"]
         )
 
         self.button.place(

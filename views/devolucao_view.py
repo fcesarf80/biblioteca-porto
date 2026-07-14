@@ -40,7 +40,7 @@ class DevolucaoView(BaseModuleView):
                 ("Prevista", 140, "center"),
             ),
             x=320,
-            y=260,
+            y=460,
             width=900,
             height=300,
         )
