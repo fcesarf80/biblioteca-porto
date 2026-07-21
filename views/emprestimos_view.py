@@ -184,13 +184,86 @@ class EmprestimosView(BaseModuleView):
         )
 
     def carregar_emprestimos(self):
-        pass
+
+        self.table.clear()
+
+        emprestimos = self.emprestimo_service.listar()
+
+        for emprestimo in emprestimos:
+
+            livro = self.livro_service.buscar_por_id(
+                emprestimo.livro_id
+            )
+
+            utilizador = self.utilizador_service.buscar_por_id(
+                emprestimo.utilizador_id
+            )
+
+            self.table.add_row(
+                (
+                    emprestimo.id,
+                    livro.titulo if livro else "",
+                    utilizador.nome if utilizador else "",
+                    emprestimo.data_emprestimo,
+                    emprestimo.data_prevista,
+                    "Ativo" if emprestimo.ativo else "Devolvido"
+                )
+            )
 
     def selecionar_emprestimo(self, event):
         pass
 
     def adicionar_emprestimo(self):
-        pass
+
+        titulo = self.combo_livro.get_value()
+        nome = self.combo_utilizador.get_value()
+
+        if not titulo or not nome:
+            return
+
+        livro = next(
+            (
+                livro
+                for livro in self.livros
+                if livro.titulo == titulo
+            ),
+            None
+        )
+
+        utilizador = next(
+            (
+                utilizador
+                for utilizador in self.utilizadores
+                if utilizador.nome == nome
+            ),
+            None
+        )
+
+        if livro is None or utilizador is None:
+            return
+
+        emprestimo = Emprestimo(
+            id=self.emprestimo_service.proximo_id(),
+            livro_id=livro.id,
+            utilizador_id=utilizador.id,
+            data_emprestimo=self.entry_data.get_value(),
+            data_prevista=self.entry_prevista.get_value(),
+            data_devolucao="",
+            ativo=True
+        )
+
+        self.emprestimo_service.adicionar(
+            emprestimo
+        )
+
+        livro.disponivel = False
+
+        self.livro_service.editar(
+            livro
+        )
+
+        self.carregar_livros()
+        self.carregar_emprestimos()
 
     def editar_emprestimo(self):
         pass
