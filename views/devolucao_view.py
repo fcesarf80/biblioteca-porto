@@ -39,10 +39,10 @@ class DevolucaoView(BaseModuleView):
                 ("Empréstimo", 140, "center"),
                 ("Prevista", 140, "center"),
             ),
-            x=320,
+            x=250,
             y=460,
-            width=900,
-            height=300,
+            width=850,
+            height=100,
         )
 
         self.table.bind(

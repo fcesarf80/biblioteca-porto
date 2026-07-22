@@ -34,7 +34,7 @@ class HistoricoView(BaseModuleView):
             x=290,  # Recuado para alinhar à esquerda
             y=320,
             width=1100,  # Expandido para usar a largura total disponível
-            height=355,
+            height=180,
         )
 
         self.table.bind("<<TreeviewSelect>>", self.selecionar_emprestimo)

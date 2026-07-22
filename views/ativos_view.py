@@ -41,9 +41,9 @@ class AtivosView(BaseModuleView):
                 ("Prevista", 80, "w"),
             ),
             x=320,
-            y=260,
+            y=300,
             width=900,
-            height=355,
+            height=200,
         )       
 
         self.table.bind(
